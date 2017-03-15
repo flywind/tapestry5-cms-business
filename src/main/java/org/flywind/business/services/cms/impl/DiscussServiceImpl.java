@@ -7,6 +7,7 @@ import org.flywind.business.common.exception.FExceptionKey;
 import org.flywind.business.dao.cms.DiscussDao;
 import org.flywind.business.dao.sys.UserDao;
 import org.flywind.business.entities.cms.Discuss;
+import org.flywind.business.entities.sys.User;
 import org.flywind.business.services.cms.DiscussService;
 import org.flywind.widgets.core.dao.FPage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,11 @@ public class DiscussServiceImpl implements DiscussService {
 		List<Discuss> discusses = discussDao.getDiscussByPostsId(id);
 		if(null != discusses && discusses.size()>0){
 			for(Discuss d : discusses){
-				d.setDiscussUser(userDao.findByUsername(d.getAuthor()));
+				if(null != d.getAuthor()){
+					User user = userDao.findByUsername(d.getAuthor());
+					d.setDiscussUser(user);
+				}
+				
 			}
 		}
 		

@@ -69,7 +69,11 @@ public class Posts extends FBase {
 	
 	private Boolean isHome = Boolean.FALSE;
 	
+	private String picUrl;
+	
 	private User user;
+	
+	private Boolean hasPic;
 	
 	@Column(name = "author", nullable = true, length = 100)
 	public String getAuthor() {
@@ -214,6 +218,24 @@ public class Posts extends FBase {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	@Column(name = "pic_url", nullable = true, length = 1000)
+	public String getPicUrl() {
+		return picUrl;
+	}
+
+	public void setPicUrl(String picUrl) {
+		this.picUrl = picUrl;
+	}
+
+	@Transient
+	public Boolean getHasPic() {
+		return hasPic;
+	}
+
+	public void setHasPic(Boolean hasPic) {
+		this.hasPic = hasPic;
 	}
 	
 	

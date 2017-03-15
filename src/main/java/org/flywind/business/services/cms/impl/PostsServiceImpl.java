@@ -89,7 +89,9 @@ public class PostsServiceImpl implements PostsService {
 		List<Discuss> discusses = discussDao.getDiscussByPostsId(id);
 		List<Tag> tags = tagDao.getAllTags();
 		//List<Category> categorys = categoryDao.getAllCategory();
-		
+		if(p.getPicUrl() == null){
+			p.setHasPic(Boolean.FALSE);
+		}
 		setTagName(p, tags);
 		setCountDiscuss(p,discusses);
 		setCountVoter(p);
@@ -109,6 +111,9 @@ public class PostsServiceImpl implements PostsService {
 				List<Discuss> discusses = discussDao.getDiscussByPostsId(ps.getId());
 				User user = userDao.findByUsername(ps.getAuthor());
 				ps.setUser(user);
+				if(ps.getPicUrl() == null){
+					ps.setHasPic(Boolean.FALSE);
+				}
 				setCountDiscuss(ps,discusses);
 				setCountVoter(ps);
 				setSubContent(ps,250);

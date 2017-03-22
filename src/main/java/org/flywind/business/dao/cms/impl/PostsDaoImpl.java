@@ -25,6 +25,10 @@ public class PostsDaoImpl extends AbstractFBaseDao<Posts> implements PostsDao {
 			condition.append(" AND categoryId != 1");
 		}
 		
+		if(posts.getIsHot()){
+			condition.append(" AND isHot = 1");
+		}
+		
 		if(null != posts.getAuthor()){
 			condition.append(" AND author = :author");
 			params.put("author", posts.getAuthor());

@@ -45,7 +45,7 @@ public class Discuss extends FBase{
 		this.reply = reply;
 	}
 
-	@Column(name = "message", nullable = true, length = 500)
+	@Column(name = "message", nullable = true, columnDefinition="TEXT")
 	public String getMessage() {
 		return message;
 	}

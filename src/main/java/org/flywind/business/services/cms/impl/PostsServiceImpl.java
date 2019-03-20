@@ -107,7 +107,7 @@ public class PostsServiceImpl implements PostsService {
 		
 		if(null != postss && postss.size()>0){
 			for(Posts ps : postss){
-				ps.setTimeAgo(RelativeDateUtile.format(ps.getLastUpdateTime(),lang));
+				ps.setTimeAgo(RelativeDateUtile.format(ps.getCreateTime(),lang));
 				List<Discuss> discusses = discussDao.getDiscussByPostsId(ps.getId());
 				User user = userDao.findByUsername(ps.getAuthor());
 				ps.setUser(user);
